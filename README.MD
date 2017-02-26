@@ -1,4 +1,17 @@
 # Hi-Framework Hooks
+API to enable Hooks for Hi-Framework
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.emerjoin</groupId>
+            <artifactId>Hi-Framework-Hooks</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+```
+
+
+
 ## BeforeRun hook
 This hook is executed before the angular application is run. 
 You can add as many hooks as you need. 
