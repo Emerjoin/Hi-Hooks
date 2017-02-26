@@ -14,9 +14,11 @@ You can add as many hooks as you need.
 
 ## BeforeView hook
 This hook is executed before a specific view controller gets executed.
+This hook allows to transform the view's $scope object and to add objects to
+be resolved upon dependencies injection. 
 
 ### Transform scope
-This hook is meant to do some transformation on the $scope object. 
+Allows to transform the view's $scope object. 
 #### Setting the hook
 ```javascript
 
@@ -44,7 +46,7 @@ This hook is meant to do some transformation on the $scope object.
 ```
 
 ### Inject objects
-This hook is meant to add objects to be resolved during dependency injection 
+Allows to add objects to be resolved during dependency injection 
 
 #### Setting the hook
 ```javascript
