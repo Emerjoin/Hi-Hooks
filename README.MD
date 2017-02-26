@@ -1,5 +1,6 @@
 # Hi-Framework Hooks
 API to enable Hooks for Hi-Framework
+## Maven dependency
 ```xml
     <dependencies>
         <dependency>
@@ -10,6 +11,10 @@ API to enable Hooks for Hi-Framework
     </dependencies>
 ```
 
+## Including hooks to template
+```html
+    <script src="webroot/emerjoin/hf-hooks.min.js"></script>
+```
 
 
 ## BeforeRun hook
