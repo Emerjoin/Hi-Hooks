@@ -1,4 +1,4 @@
-# Hi-Framework AppHooks-API
+# Hi-Framework Hooks
 ## BeforeRun hook
 This hook is executed before the angular application is run. 
 You can add as many hooks as you need. 
