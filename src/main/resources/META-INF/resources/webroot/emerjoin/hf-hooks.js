@@ -1,4 +1,5 @@
-var _$setHooks = {beforeRun:[], beforeView:{}};
+var _$setHooks = {beforeRun:[], beforeView:{}, globalBeforeView:[]};
+
 var AppHooks = {};
 AppHooks.beforeRun = function(callable){
     _$setHooks.beforeRun.push(callable);
@@ -8,7 +9,13 @@ AppHooks.getBeforeRunHooks = function(){
     return _$setHooks.beforeRun;
 };
 
-AppHooks.beforeView = function(view,callable){
+AppHooks.beforeView = function(callable,view){
+
+    //Global hook
+    if(typeof view=="undefined"){
+        _$setHooks.globalBeforeView.push(callable);
+        return;
+    }
 
     if(!_$setHooks.beforeView.hasOwnProperty(view))
         _$setHooks.beforeView[view] = [];
@@ -30,9 +37,12 @@ var BeforeView = function($scope,$tobeInjected){
 };
 
 AppHooks.getBeforeViewHooks = function(view){
+
+    var hooks = [];
     if(_$setHooks.beforeView.hasOwnProperty(view))
-        return _$setHooks.beforeView[view];
-    return [];
+        hooks = _$setHooks.beforeView[view];
+
+    return hooks.concat(_$setHooks.globalBeforeView);
 };
 
 AppHooks.fireBeforeRun = function(){

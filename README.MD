@@ -1,12 +1,18 @@
 # Hi-Framework Hooks
 API to enable Hooks for Hi-Framework
+
+
+## Changes-log
+* Global view hooks support added
+* __AppHooks.beforeView__ function signature changed
+
 ## Maven dependency
 ```xml
     <dependencies>
         <dependency>
             <groupId>org.emerjoin</groupId>
             <artifactId>Hi-Framework-Hooks</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>2.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 ```
@@ -40,7 +46,7 @@ Allows to transform the view's $scope object.
 #### Setting the hook
 ```javascript
 
-    AppHooks.beforeView("controler/action",function(before){
+    AppHooks.beforeView(function(before){
         
         //The $scope object is bound to "this" keyword
         before.transform(function(){
@@ -48,7 +54,7 @@ Allows to transform the view's $scope object.
             //This property is being added to the view's $scope
             this.car = {brand:"Toyota",model:"Rav4"};
         
-        });
+        },"controler/action");
     
     });
 ```
@@ -69,7 +75,7 @@ Allows to add objects to be resolved during dependency injection
 #### Setting the hook
 ```javascript
 
-    AppHooks.beforeView("controler/action",function(before){
+    AppHooks.beforeView(function(before){
         
       
         //This function is meant to add objects to be resolved during dependency injection 
@@ -82,7 +88,7 @@ Allows to add objects to be resolved during dependency injection
         });
         
     
-    });
+    },"controler/action");
 
 ```
 
@@ -96,3 +102,17 @@ Allows to add objects to be resolved during dependency injection
     });
 
 ```
+
+
+## Global View Hook
+Invoke the __AppHooks.beforeView__ function without passing the second parameter (view url).
+```javascript
+
+    AppHooks.beforeView(function(before){
+        
+        //Do something in here
+    
+    });
+
+```
+
