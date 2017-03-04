@@ -3,8 +3,7 @@ API to enable Hooks for Hi-Framework
 
 
 ## Changes-log
-* Global view hooks support added
-* __AppHooks.beforeView__ function signature changed
+* beforeRun hook now receives arguments: $provide,$compileProvider, $filterProvider
 
 ## Maven dependency
 ```xml
@@ -28,7 +27,7 @@ This hook is executed before the angular application is run.
 You can add as many hooks as you need. 
 ```javascript
     
-    AppHooks.beforeRun(function(){
+    AppHooks.beforeRun(function($provide,$compileProvider, $filterProvider){
         
         //Do something here
     
