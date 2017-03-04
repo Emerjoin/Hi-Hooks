@@ -3,7 +3,8 @@ API to enable Hooks for Hi-Framework
 
 
 ## Changes-log
-* beforeRun hook now receives arguments: $provide,$compileProvider, $filterProvider
+* beforeRun hook now receives one argument : the hi-framework angular module object - hook must be used to set configuration on the hi app module object.
+* new hook: setupApp - hook to set configurations on the app module object
 
 ## Maven dependency
 ```xml
@@ -27,9 +28,19 @@ This hook is executed before the angular application is run.
 You can add as many hooks as you need. 
 ```javascript
     
-    AppHooks.beforeRun(function($provide,$compileProvider, $filterProvider){
+    AppHooks.beforeRun(function(hiAppModule){
         
-        //Do something here
+        hiAppModule.config(function(){
+                    
+            //do something here
+                    
+        });
+                
+        hiAppModule.run(function(){
+                    
+            //Do more here
+                    
+        });
     
     });
     
@@ -110,6 +121,29 @@ Invoke the __AppHooks.beforeView__ function without passing the second parameter
     AppHooks.beforeView(function(before){
         
         //Do something in here
+    
+    });
+
+```
+
+
+## Setup app Hook
+Hook used to set configuration on the app module object
+```javascript
+
+    AppHooks.setupApp(function(appModule){
+        
+        appModule.config(function(){
+            
+            //do something here
+            
+        });
+        
+        appModule.run(function(){
+            
+            //Do more here
+            
+        });
     
     });
 
