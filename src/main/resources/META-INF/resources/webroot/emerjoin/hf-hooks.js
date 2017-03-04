@@ -45,9 +45,8 @@ AppHooks.getBeforeViewHooks = function(view){
     return hooks.concat(_$setHooks.globalBeforeView);
 };
 
-AppHooks.fireBeforeRun = function(){
+AppHooks.fireBeforeRun = function($provide,$compileProvider, $filterProvider){
 
-    var args = arguments;
     var hooks = _$setHooks.beforeRun;
     if(hooks.length==0)
         return;
@@ -58,7 +57,7 @@ AppHooks.fireBeforeRun = function(){
             continue;
 
         var hookFunction = hooks[key];
-        hookFunction.apply({},args);
+        hookFunction.apply({},[$provide,$compileProvider,$filterProvider]);
 
     }
 
