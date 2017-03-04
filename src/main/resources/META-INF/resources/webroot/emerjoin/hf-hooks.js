@@ -47,6 +47,7 @@ AppHooks.getBeforeViewHooks = function(view){
 
 AppHooks.fireBeforeRun = function(){
 
+    var args = arguments;
     var hooks = _$setHooks.beforeRun;
     if(hooks.length==0)
         return;
@@ -57,7 +58,7 @@ AppHooks.fireBeforeRun = function(){
             continue;
 
         var hookFunction = hooks[key];
-        hookFunction.call();
+        hookFunction.apply({},args);
 
     }
 
