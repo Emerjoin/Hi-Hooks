@@ -1,4 +1,4 @@
-var _$setHooks = {beforeRun:[], appModule:{}, beforeView:{}, globalBeforeView:[]};
+var _$setHooks = {beforeRun:[], appModule:[], beforeView:{}, globalBeforeView:[]};
 
 var AppHooks = {};
 AppHooks.beforeRun = function(callable){
